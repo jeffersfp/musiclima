@@ -1,0 +1,58 @@
+---
+swagger: "2.0"
+info:
+  description: "Find songs that match the weather!!"
+  version: "0.0.1"
+  title: "Musiclima"
+  contact:
+    email: "jeffersfp@gmail.com"
+  license:
+    name: "MIT"
+    url: "https://opensource.org/licenses/MIT"
+host: "localhost:3000"
+basePath: "/v1"
+tags:
+- name: "playlist"
+schemes:
+- "https"
+- "http"
+paths:
+  /playlist:
+    get:
+      tags:
+      - "playlist"
+      summary: "Find songs that match the weather!"
+      operationId: "findSongsByCityName"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "city"
+        in: "query"
+        description: "City name"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/Playlist"
+        404:
+          description: "City not found"
+        405:
+          description: "Invalid input"
+      x-swagger-router-controller: "Playlist"
+definitions:
+  Playlist:
+    type: "object"
+    properties:
+      songs:
+        type: "array"
+        items:
+          type: "string"
+    example:
+      songs:
+      - "songs"
+      - "songs"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
