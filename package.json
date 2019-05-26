@@ -5,12 +5,15 @@
   "author": "Jefferson F. Pires <jeffersfp@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "prestart": "yarn install",
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
   },
   "dependencies": {
     "connect": "^3.2.0",
     "js-yaml": "^3.3.0",
     "swagger-tools": "0.10.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
   }
 }
