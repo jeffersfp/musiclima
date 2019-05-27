@@ -11,7 +11,7 @@ const config = require('./config');
 
 // swaggerRouter configuration
 const options = {
-    serverPort: process.env.PORT || config.PORT,
+    serverPort: process.env.PORT || 3000,
     swaggerUi: path.join(__dirname, '/swagger.json'),
     controllers: path.join(__dirname, './controllers'),
     useStubs: process.env.NODE_ENV === 'development' // Conditionally turn on stubs (mock mode)

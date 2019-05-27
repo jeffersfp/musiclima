@@ -5,7 +5,7 @@ const axios = require('axios');
 const config = require('../config');
 
 // The OPENWEATHER_API_KEY from env var or .env file
-const APPID = config.OPENWEATHER_API_KEY;
+const APPID = process.env.OPENWEATHER_API_KEY || config.OPENWEATHER_API_KEY;
 
 /**
  * Retrieve Weather information from a given city name
