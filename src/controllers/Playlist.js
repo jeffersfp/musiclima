@@ -4,12 +4,8 @@ const utils = require('../utils/writer.js');
 const Playlist = require('../service/PlaylistService');
 
 module.exports.findSongsByCityName = function findSongsByCityName(req, res, next) {
-    var city = req.swagger.params['city'].value;
+    const city = req.swagger.params['city'].value;
     Playlist.findSongsByCityName(city)
-        .then(function (response) {
-            utils.writeJson(res, response);
-        })
-        .catch(function (response) {
-            utils.writeJson(res, response);
-        });
+        .then(playlist => utils.writeJson(res, playlist))
+        .catch(err => utils.writeJson(res, err));
 };
