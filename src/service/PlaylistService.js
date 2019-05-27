@@ -1,22 +1,21 @@
 'use strict';
 
 
+const OpenWeatherService = require('./OpenWeatherService');
+
 /**
  * Find songs that match the weather!
  *
  * city String City name
  * returns Playlist
  **/
-exports.findSongsByCityName = function (city) {
-    return new Promise(function (resolve, reject) {
-        var examples = {};
-        examples['application/json'] = {
-            "songs": ["songs", "songs"]
-        };
-        if (Object.keys(examples).length > 0) {
-            resolve(examples[Object.keys(examples)[0]]);
-        } else {
-            resolve();
-        }
-    });
+exports.findSongsByCityName = async function (city) {
+    try {
+        const weather = await OpenWeatherService.retrieveWeatherByCityName(city);
+        console.debug('PlaylistService call: success');
+        return weather;
+    } catch (error) {
+        console.error('PlaylistService error: ', error);
+        return new Error(error);
+    }
 }
