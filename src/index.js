@@ -7,11 +7,11 @@ const fs = require('fs'),
 const app = require('connect')();
 const swaggerTools = require('swagger-tools');
 const jsyaml = require('js-yaml');
-const serverPort = process.env.PORT || 3000;
-
+const config = require('./config');
 
 // swaggerRouter configuration
 const options = {
+    serverPort: config.PORT,
     swaggerUi: path.join(__dirname, '/swagger.json'),
     controllers: path.join(__dirname, './controllers'),
     useStubs: process.env.NODE_ENV === 'development' // Conditionally turn on stubs (mock mode)
@@ -37,9 +37,9 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
     app.use(middleware.swaggerUi());
 
     // Start the server
-    http.createServer(app).listen(serverPort, function () {
-        console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
-        console.log('Swagger-ui is available on http://localhost:%d/docs', serverPort);
+    http.createServer(app).listen(options.serverPort, function () {
+        console.log('Your server is listening on port %d (http://localhost:%d)', options.serverPort, options.serverPort);
+        console.log('Swagger-ui is available on http://localhost:%d/docs', options.serverPort);
     });
 
 });
