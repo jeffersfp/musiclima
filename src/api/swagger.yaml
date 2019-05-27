@@ -9,7 +9,7 @@ info:
   license:
     name: "MIT"
     url: "https://opensource.org/licenses/MIT"
-host: "localhost:3000"
+host: "musiclima.herokuapp.com"
 basePath: "/v1"
 tags:
 - name: "playlist"
