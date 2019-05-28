@@ -15,9 +15,7 @@ The rules are:
 
 ### Tip:
 
-If the city temperature is below 10C degrees then you'll get a Classical Music list 🎻
-Otherwise, if the city temperature is between 20C degrees and 25C degrees then you'll get a Rock Music list 🤟
-But, if the city temperature is hot AF (> 25C degrees) then you get a Pop Music list 🎤
+If the city temperature is below 10C degrees then you'll get a Classical Music list 🎻<br>Otherwise, if the city temperature is between 20C degrees and 25C degrees then you'll get a Rock Music list 🤟<br>But, if the city temperature is hot AF (> 25C degrees) then you get a Pop Music list 🎤
 
 > Try it out at the [docs](https://musiclima.herokuapp.com/docs).
 
