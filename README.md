@@ -25,12 +25,14 @@ For this app to work you'll need NodeJS 10.x.
 
 1. Clone this repository
 2. Install dependencies
+3. Setup the app env vars
 3. Start the app
 
 ```
 $ git clone https://github.com/jeffersfp/musiclima.git
 $ cd musiclima
 $ yarn install
+$ cp .env.example .env && vim .env # add services api keys
 $ yarn run dev
 ```
 
