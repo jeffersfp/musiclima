@@ -2,48 +2,83 @@
 
 Find songs that match the weather!
 
----
+## Online version
 
-Instructions:
+The online version is available at https://musiclima.herokuapp.com.
+
+Check the docs [here](https://musiclima.herokuapp.com/docs) 📚.
+
+The rules are:
+
+1. Provide a city name
+2. Get a songs list that match the weather of that city
+
+### Tip:
+
+If the city temperature is below 10C degrees then you'll get a Classical Music list 🎻
+Otherwise, if the city temperature is between 20C degrees and 25C degrees then you'll get a Rock Music list 🤟
+But, if the city temperature is hot AF (> 25C degrees) then you get a Pop Music list 🎤
+
+> Try it out at the [docs](https://musiclima.herokuapp.com/docs).
+
+## Development
+
+For this app to work you'll need NodeJS 10.x.
+
+1. Clone this repository
+2. Install dependencies
+3. Start the app
 
 ```
-Um estudo organizado por um grupo de pesquisadores desocupados demonstrou que as pessoas tendem a preferir diferentes gêneros musicais de acordo com a temperatura ambiente. Baseado nesta incrível descoberta, você foi contratada(o) para desenvolver um serviço revolucionário que irá sugerir músicas ao usuário de acordo com a temperatura atual da cidade dele!
-
-
-
-Os requisitos funcionais são simples:
-
-Seu serviço deve ser acessível através de uma API RESTful.
-Seu serviço deve aceitar o nome de uma cidade como parâmetro, e a partir disso retornar uma playlist (somente o nome das músicas já é o suficiente) de acordo com a temperatura atual na cidade fornecida.
-Se a temperatura:
-for de 25ºC ou maior, o serviço deve sugerir músicas Pop;
-estiver entre 10ºC e 25ºC, o serviço deve sugerir músicas de Rock;
-estiver abaixo de 10ºC, a sugestão deve ser de músicas clássicas;
-
-
-Uma vez que espera-se que o serviço seja utilizado por milhares de pessoas, estratégias para torná-lo escalável e resiliente são bem-vindas.
-
-
-
-Você pode utilizar qualquer linguagem, ferramenta, framework ou biblioteca com as quais se sentir confortável ou que julgar necessário, apenas certifique-se de descrever brevemente sua solução, explicando suas decisões de arquitetura.
-
-
-
-Caso tenha qualquer dúvida sobre o teste ou sua solução, a qualquer momento, sinta-se à vontade para entrar em contato com o Michel Nagme no e-mail michelfnrc@gmail.com.
-
-
-
-Suba seu código em um repositório do GitHub e, ao final, certifique-se de compartilhá-lo conosco (você pode adicionar o Michel como colaborador). Além disso, indique como rodar o seu serviço localmente ou disponibilize uma versão online dele.
-
-
-
-Dicas:
-
-A temperatura da cidade deve ser, de fato, a temperatura real dela naquele momento. Para ter acesso a esse dado, você pode utilizar qualquer API aberta de serviços meteorológicos que preferir. Nossa sugestão é a do OpenWeatherMaps [https://openweathermap.org/api].
-
-
-Você também pode, a seu critério, utilizar um serviço terceiro para gerar as sugestões de músicas para as playlists que você irá retornar. Uma boa dica nesse caso é a API do Spotify [https://developer.spotify.com/documentation/web-api/], eles inclusive tem uma lista de bibliotecas, em diversas linguagens, para acessar a API deles.
-
-
-Caso queira deixar seu serviço disponível online, uma boa dica é o Heroku [https://www.heroku.com/]. Ele permite que você publique algumas aplicações gratuitamente.
+$ git clone https://github.com/jeffersfp/musiclima.git
+$ yarn install
+$ yarn run dev
 ```
+
+There's a `docker-compose.yml` file that will help spinning up Swagger tools for API design. Simply install [Docker](https://docs.docker.com/install/), [Docker-Compose](https://docs.docker.com/compose/install/) and bring it up with `docker-compose up`.
+
+```
+$ curl -fsSL "https://get.docker.com" | sh -c -
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && sudo chmod +x /usr/local/bin/docker-compose
+$ cd musiclima
+$ docker-compose up
+```
+
+[Swagger Editor](https://swagger.io/tools/swagger-editor/) will be available at http://localhost:9001<br>
+[Swagger UI](https://swagger.io/tools/swagger-ui/) will be available at http://localhost:9002
+
+## Deploy
+
+1. Create a [Heroku](https://www.heroku.com/) account
+2. Clone this repository
+3. Create a Heroku app
+4. Set app config vars
+5. Push the app to Heroku
+6. Enjoy
+
+```
+$ # create heroku account at https://www.heroku.com/
+$ git clone https://github.com/jeffersfp/musiclima.git
+$ heroku create <APP_NAME>
+$ heroku config:push
+$ heroku config:set OPENWEATHER_API_KEY=API_KEY
+$ heroku config:set SPOTIFY_CLIENT_ID=API_KEY
+$ heroku config:set SPOTIFY_CLIENT_SECRET=API_KEY
+$ git push heroku master
+```
+
+> You need to replace `API_KEY` for a valid real API Key from OpenWeather and Spotify services.
+
+## How to get API Keys
+
+### OpenWeather
+
+Follow this [guide](https://openweathermap.org/appid).
+
+### Spotify
+
+Create and register an app. Follow the official [guide](https://developer.spotify.com/documentation/general/guides/app-settings/).
+
+## LICENSE
+
+See LICENSE file.
