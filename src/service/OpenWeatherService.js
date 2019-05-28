@@ -17,11 +17,14 @@ exports.retrieveWeatherByCityName = async function (city) {
     console.log(`Fetching weather of ${city} from OpenWeather API`);
     const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${APPID}`;
     try {
+        console.debug('Fetching OpenWeather data for city: ', city);
         const response = await axios.get(url);
-        console.debug('OpenWeatherService call: success');
+        if (response.status != 200) {
+            throw new Error(`OpenWeatherService error: ${error.message}`);
+        }
         return response.data;
     } catch (error) {
-        console.error('OpenWeatherService error: ', error);
-        return new Error(error);
+        console.error(`OpenWeatherService error: ${error.message}`);
+        throw new Error(`OpenWeatherService error: ${error.message}`);
     }
 }
