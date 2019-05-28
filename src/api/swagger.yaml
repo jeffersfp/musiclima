@@ -43,16 +43,24 @@ paths:
       x-swagger-router-controller: "Playlist"
 definitions:
   Playlist:
+    type: "array"
+    items:
+      type: "object"
+      $ref: "#/definitions/Song"
+  Song:
     type: "object"
     properties:
-      songs:
+      name:
+        type: "string"
+        example: "Rock and Roll - 1990 Remaster"
+      artists:
         type: "array"
         items:
           type: "string"
-    example:
-      songs:
-      - "songs"
-      - "songs"
+          example: "Led Zeppelin"
+      album:
+        type: "string"
+        example: "Led Zeppelin IV"
 externalDocs:
   description: "Find out more about Swagger"
   url: "http://swagger.io"
